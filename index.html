@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Виноградов Игорь - Python-разработчик</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d1b2a;--bg2:#112240;--card:#1a2e4a;--blue:#38bdf8;--blue-d:#0ea5e9;--text:#ccd6f6;--text2:#8892b0;--white:#e6f1ff}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:16px 48px;background:rgba(13,27,42,.92);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid rgba(56,189,248,.1)}
+.logo{font-size:1.4rem;font-weight:700;color:var(--blue);text-decoration:none}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text);font-size:.95rem;transition:color .2s}
+.nav-links a:hover{color:var(--blue)}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 40px}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:800;color:var(--blue);margin-bottom:16px}
+.hero .sub{font-size:1.25rem;color:var(--text);margin-bottom:16px}
+.hero .desc{font-size:1rem;color:var(--text2);max-width:600px;margin-bottom:40px}
+.btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+.btn-p{background:var(--blue-d);color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;transition:background .2s}
+.btn-p:hover{background:var(--blue)}
+.btn-o{border:1px solid var(--text2);color:var(--text);padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;transition:border-color .2s,color .2s}
+.btn-o:hover{border-color:var(--blue);color:var(--blue)}
+.socials{display:flex;gap:20px}
+.socials a{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--text2);border-radius:50%;color:var(--text);text-decoration:none;font-size:1.2rem;transition:border-color .2s,color .2s}
+.socials a:hover{border-color:var(--blue);color:var(--blue)}
+section{padding:100px 24px}
+.container{max-width:1100px;margin:0 auto}
+.sec-title{font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--blue);text-align:center;margin-bottom:12px}
+.sec-sub{text-align:center;color:var(--text2);margin-bottom:64px;font-size:1rem}
+#about{background:var(--bg)}
+.about-card{background:var(--card);border:1px solid rgba(56,189,248,.15);border-radius:16px;padding:40px 48px;max-width:900px;margin:0 auto 48px}
+.about-card p{color:var(--text2);margin-bottom:16px;font-size:1.05rem}
+.about-card p strong{color:var(--white)}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.af{background:var(--card);border:1px solid rgba(56,189,248,.15);border-radius:12px;padding:24px}
+.af-icon{width:44px;height:44px;border-radius:10px;background:var(--blue-d);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.af h3{font-size:1rem;color:var(--white);margin-bottom:6px}
+.af p{font-size:.85rem;color:var(--text2);margin:0}
+#skills{background:var(--bg2)}
+.sb-wrap{background:var(--card);border:1px solid rgba(56,189,248,.15);border-radius:16px;padding:40px 48px;max-width:900px;margin:0 auto 48px}
+.sb-wrap h3{text-align:center;color:var(--white);margin-bottom:32px;font-size:1.1rem}
+.sb{margin-bottom:20px}
+.sb-hd{display:flex;justify-content:space-between;color:var(--text);font-size:.9rem;margin-bottom:6px}
+.track{background:rgba(56,189,248,.12);border-radius:4px;height:6px;overflow:hidden}
+.fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--blue-d),var(--blue))}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.cat{background:var(--card);border:1px solid rgba(56,189,248,.15);border-radius:12px;padding:24px}
+.cat h3{color:var(--blue);font-size:.95rem;margin-bottom:16px}
+.cat ul{list-style:none}
+.cat li{color:var(--text2);font-size:.88rem;padding:4px 0;display:flex;align-items:center;gap:8px}
+.cat li::before{content:"\25B9";color:var(--blue)}
+#projects{background:var(--bg)}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.pc{background:var(--card);border:1px solid rgba(56,189,248,.15);border-radius:16px;overflow:hidden;transition:border-color .2s,transform .2s}
+.pc:hover{border-color:var(--blue);transform:translateY(-4px)}
+.pi{height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.pb{padding:24px}
+.pn{font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:10px}
+.pd{font-size:.88rem;color:var(--text2);margin-bottom:16px;line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tag{background:rgba(56,189,248,.1);color:var(--blue);font-size:.75rem;padding:3px 10px;border-radius:20px}
+.pf{list-style:none;margin-bottom:20px}
+.pf li{font-size:.82rem;color:var(--text2);padding:3px 0;display:flex;align-items:center;gap:8px}
+.pf li::before{content:"\2713";color:var(--blue);font-weight:700}
+.pl{display:inline-flex;align-items:center;gap:6px;color:var(--blue);text-decoration:none;font-size:.88rem;font-weight:600;border:1px solid var(--blue);border-radius:8px;padding:8px 18px;transition:background .2s}
+.pl:hover{background:rgba(56,189,248,.1)}
+#contact{background:var(--bg2)}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:800px;margin:0 auto 40px}
+.cc{background:var(--card);border:1px solid rgba(56,189,248,.15);border-radius:12px;padding:24px;text-decoration:none;text-align:center;transition:border-color .2s}
+.cc:hover{border-color:var(--blue)}
+.cc-icon{font-size:1.8rem;margin-bottom:10px}
+.cc-t{color:var(--text2);font-size:.8rem;margin-bottom:6px}
+.cc-v{color:var(--white);font-size:.95rem;font-weight:600}
+.cta{text-align:center}
+.cta p{color:var(--text2);margin-bottom:20px}
+footer{text-align:center;padding:32px 24px;border-top:1px solid rgba(56,189,248,.1);color:var(--text2);font-size:.85rem}
+.g1{background:linear-gradient(135deg,#0a2a1a,#0d4a2a)}
+.g2{background:linear-gradient(135deg,#0a1a3a,#0d2a5a)}
+.g3{background:linear-gradient(135deg,#1a0a3a,#2a0d5a)}
+.g4{background:linear-gradient(135deg,#2a1a00,#4a3000)}
+.g5{background:linear-gradient(135deg,#001a2a,#003a4a)}
+.g6{background:linear-gradient(135deg,#2a001a,#4a002a)}
+.g7{background:linear-gradient(135deg,#001a1a,#003a3a)}
+.g8{background:linear-gradient(135deg,#2a0e00,#4a1e00)}
+.g9{background:linear-gradient(135deg,#100a2a,#200d4a)}
+.g10{background:linear-gradient(135deg,#2a0a0a,#4a0d0d)}
+</style>
+</head>
+<body>
+<nav>
+<a href="#" class="logo">ИВЛ</a>
+<ul class="nav-links">
+<li><a href="#about">О себе</a></li>
+<li><a href="#skills">Навыки</a></li>
+<li><a href="#projects">Проекты</a></li>
+<li><a href="#contact">Контакты</a></li>
+</ul>
+</nav>
+<section class="hero">
+<h1>Виноградов Игорь</h1>
+<p class="sub">Python-разработчик</p>
+<p class="desc">Разрабатываю проекты от идеи до готового продукта: backend + frontend + база данных + автоматизация</p>
+<div class="btns">
+<a href="#projects" class="btn-p">Мои проекты</a>
+<a href="#contact" class="btn-o">Связаться</a>
+</div>
+<div class="socials">
+<a href="https://github.com/Igor1803" title="GitHub">&#xe000;</a>
+<a href="https://t.me/IgoroK1803" title="Telegram">&#9993;</a>
+<a href="mailto:krous1@ya.ru" title="Email">&#9993;</a>
+<a href="tel:+79296377844" title="Phone">&#9990;</a>
+</div>
+</section>
+<section id="about">
+<div class="container">
+<h2 class="sec-title">О себе</h2>
+<div class="about-card">
+<p>Начинающий Python-разработчик, прошёл комплексное обучение по программе «Программист на Python с нуля», включающее основы программирования, алгоритмы, работу с базами данных, веб-разработку, парсинг данных, создание чат-ботов и тестирование.</p>
+<p><strong>Умею разрабатывать проекты от идеи до готового продукта: backend + frontend + база данных + автоматизация</strong></p>
+</div>
+<div class="about-grid">
+<div class="af"><div class="af-icon">&#60;/&#62;</div><h3>Full-Stack разработка</h3><p>Flask, Django, HTML, CSS, Bootstrap</p></div>
+<div class="af"><div class="af-icon">&#128190;</div><h3>Базы данных</h3><p>SQL, ORM, миграции, оптимизация запросов</p></div>
+<div class="af"><div class="af-icon">&#9881;</div><h3>DevOps практики</h3><p>Git, Linux, виртуальные машины, деплой</p></div>
+<div class="af"><div class="af-icon">&#128279;</div><h3>API и парсинг</h3><p>REST API, BeautifulSoup, Selenium</p></div>
+</div>
+</div>
+</section>
+<section id="skills">
+<div class="container">
+<h2 class="sec-title">Технические навыки</h2>
+<p class="sec-sub">Стек технологий и инструментов</p>
+<div class="sb-wrap">
+<h3>Основные компетенции</h3>
+<div class="sb"><div class="sb-hd"><span>Python</span><span>90%</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+<div class="sb"><div class="sb-hd"><span>Flask / Django</span><span>85%</span></div><div class="track"><div class="fill" style="width:85%"></div></div></div>
+<div class="sb"><div class="sb-hd"><span>SQL / PostgreSQL</span><span>80%</span></div><div class="track"><div class="fill" style="width:80%"></div></div></div>
+<div class="sb"><div class="sb-hd"><span>Git / GitHub</span><span>85%</span></div><div class="track"><div class="fill" style="width:85%"></div></div></div>
+<div class="sb"><div class="sb-hd"><span>HTML / CSS / Bootstrap</span><span>75%</span></div><div class="track"><div class="fill" style="width:75%"></div></div></div>
+<div class="sb"><div class="sb-hd"><span>REST API</span><span>80%</span></div><div class="track"><div class="fill" style="width:80%"></div></div></div>
+<div class="sb"><div class="sb-hd"><span>BeautifulSoup / Selenium</span><span>85%</span></div><div class="track"><div class="fill" style="width:85%"></div></div></div>
+<div class="sb"><div class="sb-hd"><span>Linux</span><span>70%</span></div><div class="track"><div class="fill" style="width:70%"></div></div></div>
+<div class="sb"><div class="sb-hd"><span>NumPy / Pandas</span><span>75%</span></div><div class="track"><div class="fill" style="width:75%"></div></div></div>
+<div class="sb"><div class="sb-hd"><span>Telegram Bot API</span><span>80%</span></div><div class="track"><div class="fill" style="width:80%"></div></div></div>
+</div>
+<div class="cats">
+<div class="cat"><h3>Язык программирования</h3><ul><li>Python</li><li>ООП</li><li>Обработка файлов</li><li>Пакеты и модули</li></ul></div>
+<div class="cat"><h3>Веб-разработка</h3><ul><li>Flask</li><li>Django</li><li>HTML/CSS</li><li>Bootstrap</li><li>REST API</li></ul></div>
+<div class="cat"><h3>Базы данных</h3><ul><li>SQL</li><li>PostgreSQL</li><li>SQLite</li><li>ORM</li></ul></div>
+<div class="cat"><h3>Инструменты</h3><ul><li>Git</li><li>GitHub</li><li>Linux</li><li>VirtualBox</li><li>pytest</li></ul></div>
+<div class="cat"><h3>Парсинг и API</h3><ul><li>requests</li><li>BeautifulSoup</li><li>Selenium</li><li>JSON/XML</li></ul></div>
+<div class="cat"><h3>Анализ данных</h3><ul><li>NumPy</li><li>Pandas</li><li>Matplotlib</li></ul></div>
+<div class="cat"><h3>Чат-боты</h3><ul><li>Telegram Bot API</li><li>Aiogram</li><li>Интеграции</li></ul></div>
+<div class="cat"><h3>Алгоритмы</h3><ul><li>Структуры данных</li><li>Сортировки</li><li>Графы</li><li>Деревья</li></ul></div>
+</div>
+</div>
+</section>
+<section id="projects">
+<div class="container">
+<h2 class="sec-title">Проекты</h2>
+<p class="sec-sub">Реализованные проекты и разработки</p>
+<div class="pg">
+<div class="pc"><div class="pi g1">&#127918;</div><div class="pb"><h3 class="pn">JobBoard</h3><p class="pd">Веб-платформа для поиска работы и резюме с интуитивным интерфейсом и быстрым поиском</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span></div><ul class="pf"><li>Интуитивный UI</li><li>Фильтрация вакансий</li><li>Загрузка резюме</li></ul><a href="https://github.com/Igor1803/JobBoard" class="pl">GitHub &#8594;</a></div></div>
+<div class="pc"><div class="pi g2">&#128270;</div><div class="pb"><h3 class="pn">Parser_vacancy</h3><p class="pd">Программа парсинга вакансий с сайтов и фильтрации по навыкам</p><div class="tags"><span class="tag">Python</span><span class="tag">BeautifulSoup</span><span class="tag">Parsing</span></div><ul class="pf"><li>Парсинг вакансий</li><li>Фильтры по навыкам</li><li>Экспорт данных</li></ul><a href="https://github.com/Igor1803/Parser_vacancy" class="pl">GitHub &#8594;</a></div></div>
+<div class="pc"><div class="pi g3">&#128172;</div><div class="pb"><h3 class="pn">ru-review-sentiment-analyzer</h3><p class="pd">Веб-сервис для автоматического анализа текстовых отзывов на русском языке</p><div class="tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Sentiment Analysis</span></div><ul class="pf"><li>Анализ тональности</li><li>Визуализация</li><li>Russian Language</li></ul><a href="https://github.com/Igor1803/ru-review-sentiment-analyzer" class="pl">GitHub &#8594;</a></div></div>
+<div class="pc"><div class="pi g4">&#128200;</div><div class="pb"><h3 class="pn">FINAM-Trade-Analytics-API</h3><p class="pd">Аналитический сервис на FastAPI для работы с FINAM Trade API</p><div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Trading</span></div><ul class="pf"><li>FastAPI Backend</li><li>FINAM Integration</li><li>Торговая аналитика</li></ul><a href="https://github.com/Igor1803/FINAM-Trade-Analytics-API" class="pl">GitHub &#8594;</a></div></div>
+<div class="pc"><div class="pi g5">&#128172;</div><div class="pb"><h3 class="pn">Telegram</h3><p class="pd">Телеграм-бот для автоматизации задач и управления</p><div class="tags"><span class="tag">Python</span><span class="tag">Telegram API</span><span class="tag">Bot</span></div><ul class="pf"><li>Telegram Bot API</li><li>Автоматизация</li><li>Командный интерфейс</li></ul><a href="https://github.com/Igor1803/Telegram" class="pl">GitHub &#8594;</a></div></div>
+<div class="pc"><div class="pi g6">&#127915;</div><div class="pb"><h3 class="pn">telegram-booking-bot</h3><p class="pd">Система бронирования билетов через Telegram-бот</p><div class="tags"><span class="tag">Python</span><span class="tag">Telegram API</span><span class="tag">Booking</span></div><ul class="pf"><li>Бронирование билетов</li><li>Уведомления</li><li>Интеграция с DB</li></ul><a href="https://github.com/Igor1803/telegram-booking-bot" class="pl">GitHub &#8594;</a></div></div>
+<div class="pc"><div class="pi g7">&#127918;</div><div class="pb"><h3 class="pn">Games</h3><p class="pd">Коллекция игр: Тетрис, Крестики-нолики, Pygame-TIR</p><div class="tags"><span class="tag">Python</span><span class="tag">Pygame</span><span class="tag">Games</span></div><ul class="pf"><li>Классические игры</li><li>Pygame UI</li><li>Обучающий проект</li></ul><a href="https://github.com/Igor1803/Games" class="pl">GitHub &#8594;</a></div></div>
+<div class="pc"><div class="pi g8">&#128197;</div><div class="pb"><h3 class="pn">Event-management-tool</h3><p class="pd">Telegram-бот для автоматизации регистрации на мероприятия</p><div class="tags"><span class="tag">Python</span><span class="tag">Telegram Bot API</span><span class="tag">Google Sheets</span></div><ul class="pf"><li>1000+ пользователей</li><li>Google Sheets API</li><li>Геолокация</li></ul><a href="https://github.com/Igor1803/Event-management-tool" class="pl">GitHub &#8594;</a></div></div>
+<div class="pc"><div class="pi g9">&#128231;</div><div class="pb"><h3 class="pn">Email-Parser</h3><p class="pd">Парсер email-адресов компаний общепита по всей России</p><div class="tags"><span class="tag">Python</span><span class="tag">BeautifulSoup</span><span class="tag">Pandas</span></div><ul class="pf"><li>Парсинг данных</li><li>Валидация email</li><li>Экспорт CSV/Excel</li></ul><a href="https://github.com/Igor1803/Email-Parser" class="pl">GitHub &#8594;</a></div></div>
+<div class="pc"><div class="pi g10">&#128483;</div><div class="pb"><h3 class="pn">Telegram-bot-for-language-practice</h3><p class="pd">Telegram-бот для языковой практики с голосовым распознаванием</p><div class="tags"><span class="tag">Python</span><span class="tag">Telegram Bot API</span><span class="tag">Speech Recognition</span></div><ul class="pf"><li>Голосовая практика</li><li>Распознавание речи</li><li>FAQ поддержка</li></ul><a href="https://github.com/Igor1803/Telegram-bot-for-language-practice" class="pl">GitHub &#8594;</a></div></div>
+</div></div></section>
+<section id="contact">
+<div class="container">
+<h2 class="sec-title">Контакты</h2>
+<p class="sec-sub">Свяжитесь со мной удобным способом</p>
+<div class="cg">
+<a href="tel:+79296377844" class="cc"><div class="cc-icon">&#128222;</div><div class="cc-t">Телефон</div><div class="cc-v">+7 (929) 637-78-44</div></a>
+<a href="https://t.me/IgoroK1803" class="cc"><div class="cc-icon">&#9993;</div><div class="cc-t">Telegram</div><div class="cc-v">@IgoroK1803</div></a>
+<a href="mailto:krous1@ya.ru" class="cc"><div class="cc-icon">&#9993;</div><div class="cc-t">Email</div><div class="cc-v">krous1@ya.ru</div></a>
+<a href="https://github.com/Igor1803" class="cc"><div class="cc-icon">&#128187;</div><div class="cc-t">GitHub</div><div class="cc-v">Igor1803</div></a>
+</div>
+<div class="cta">
+<p>Открыт для новых проектов и сотрудничества</p>
+<a href="mailto:krous1@ya.ru" class="btn-p">Написать письмо</a>
+</div>
+</div>
+</section>
+<footer>
+<p>&copy; 2026 Виноградов Игорь. Python-разработчик</p>
+</footer>
+</body>
+</html>
